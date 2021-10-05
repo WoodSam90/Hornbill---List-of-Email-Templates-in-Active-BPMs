@@ -1,0 +1,23 @@
+variables:
+- group: 'Group'
+- name: 'github-organisation'
+  value: 'WoodSam90'
+- name: 'github-repository'
+  value: 'Hornbill---List-of-Email-Templates-in-Active-BPMs'
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: 'GitPush'
+  jobs:
+    - job: GitPush
+      steps:
+        - checkout: self
+        - script: git push https://$(GITHUB_PAT)@github.com/$(github-organisation)/$(github-repository).git HEAD:refs/heads/master
+          displayName: 'Git push to remote repository'
+          env:
+            Group: $(GITHUB_PAT)
