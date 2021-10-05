@@ -7,6 +7,7 @@
 #
 #.EXAMPLE
 # $results = Get-HB-BPMEmailTemplates
+# $results
 #
 ##############################
 function Get-HB-BPMEmailTemplates
